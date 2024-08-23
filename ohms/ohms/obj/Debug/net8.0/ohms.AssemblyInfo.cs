@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ohms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d3716c6f1fbc9f745f5a48e8d81162f5f13491b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23234e02ae6f1d75ba03f83d511ece21e2706f9f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ohms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ohms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

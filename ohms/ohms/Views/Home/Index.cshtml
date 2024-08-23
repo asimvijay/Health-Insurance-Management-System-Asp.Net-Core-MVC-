@@ -1,8 +1,147 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using ohms.Models.LandingPage;
+@{
+    ViewData["Title"] = "Home";
+    var policies = ViewBag.Policies as IEnumerable<Policy>; 
+    var companies = ViewBag.Companies as IEnumerable<Company>; 
+    var testimonials = ViewBag.Testimonials as IEnumerable<Testimonial>; 
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+
+        .card-deck .card {
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OHMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to OHMS</h1>
+            <p class="lead">Your one-stop solution for managing health insurance effortlessly.</p>
+        </div>
+    </header>
+
+    <!-- Dynamic Policies Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Our Insurance Policies</h2>
+        <div class="row">
+            @if (policies != null && policies.Any())
+            {
+                foreach (var policy in policies)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@policy.PolicyName</h5>
+                                <p class="card-text">@policy.Description</p>
+                                <p class="card-text"><strong>Amount:</strong> @policy.Amount</p>
+                                <a href="#" class="btn btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">No policies available at the moment.</p>
+            }
+        </div>
+    </section>
+
+    <!-- Dynamic Companies Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Our Partner Companies</h2>
+        <div class="row">
+            @if (companies != null && companies.Any())
+            {
+                foreach (var company in companies)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@company.CompanyName</h5>
+                                <p class="card-text">@company.Address</p>
+                                <p class="card-text"><strong>Phone:</strong> @company.Phone</p>
+                                <a href="@company.CompanyURL" class="btn btn-primary" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">No company information available at the moment.</p>
+            }
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">What Our Clients Say</h2>
+        <div class="row">
+            @if (testimonials != null && testimonials.Any())
+            {
+                foreach (var testimonial in testimonials)
+                {
+                    <div class="col-md-4">
+                        <div class="testimonial">
+                            <p class="mb-2"><strong>@testimonial.ClientName:</strong></p>
+                            <p>@testimonial.Comment</p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">No testimonials available at the moment.</p>
+            }
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-4">
+        <p class="mb-0">&copy; 2024 OHMS. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
