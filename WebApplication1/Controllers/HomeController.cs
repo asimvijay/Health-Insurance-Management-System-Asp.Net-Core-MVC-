@@ -1,8 +1,8 @@
+using HealthInsurance.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace HealthInsurance.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            return !User.Identity.IsAuthenticated? this.Redirect("~/identity/account/login"): View();
+            return View();
         }
 
         public IActionResult Privacy()

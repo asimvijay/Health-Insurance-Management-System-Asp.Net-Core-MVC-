@@ -1,0 +1,63 @@
+﻿@model HealthInsurance.Entities.CompanyDetails
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mx-auto p-6 max-w-lg">
+
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+        <h4 class="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-200">Edit Company Information</h4>
+        <hr class="border-gray-300 dark:border-gray-700 mb-8" />
+
+        <form asp-action="Edit" class="space-y-6">
+            <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
+            <input type="hidden" asp-for="CompanyId" />
+
+            <div class="space-y-2">
+                <label for="CompanyName" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Company Name</label>
+                <input id="CompanyName" name="CompanyName" asp-for="CompanyName"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="CompanyName" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="Address" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Address</label>
+                <input id="Address" name="Address" asp-for="Address"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="Address" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="Phone" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Phone</label>
+                <input id="Phone" name="Phone" asp-for="Phone"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="Phone" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="CompanyURL" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Company URL</label>
+                <input id="CompanyURL" name="CompanyURL" asp-for="CompanyURL"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="CompanyURL" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex justify-end space-x-4">
+                <a asp-action="Index"
+                   class="px-5 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 transition duration-300">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to List
+                </a>
+                <button type="submit"
+                        class="px-9 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 transition duration-300">
+                    <i class="fas fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,452 +1,225 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ONLINE HELP DESK</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="~/Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="~/Admin/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/Admin/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="~/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="~/Admin/plugins/daterangepicker/daterangepicker.css">
-    <!-- Summernote -->
-    <link rel="stylesheet" href="~/Admin/plugins/summernote/summernote-bs4.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="~/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HealthInsurance</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HealthInsurance.styles.css" asp-append-version="true" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC:wght@400;700&family=Raleway:wght@400;600;900&display=swap" rel="stylesheet" />
+    <script>
+    tailwind.config = {
+     theme: {
+    extend: {
+      screens: {
+        'dark': {'raw': '(prefers-color-scheme: dark)'},
+      }
+    }
+  }
+  }
+  </script>
+    <script>
+        // Auto-enable dark mode based on user preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="Admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-        </div>
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="~/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin OHD</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="~/Admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">ADMIN</a>
-                    </div>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors duration-300" style="font-family: 'Raleway', sans-serif;">
+    <div id="loading-overlay" class="fixed inset-0 bg-white dark:bg-gray-800 bg-opacity-75 dark:bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="w-16 h-16 border-4 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+    </div>
+@if (Context.User.Identity.Name != null)
+{
+    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-start rtl:justify-end">
+                    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                        <span class="sr-only">Open sidebar</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+                        </svg>
+                    </button>
+                    <a class="text-3xl font-extrabold tracking-wide text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-600" style="font-family: 'Baskervville SC', serif;" asp-area="" asp-controller="Home" asp-action="Index">HealthInsurance</a>
                 </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
+                <div class="flex items-center">
+                    <div class="flex items-center ms-3">
+                        <div>
+                            <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
                             </button>
+                        </div>
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                            <div class="px-4 py-3" role="none">
+                                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                    @Context.User.Identity.Name
+                                </p>
+                            </div>
+                            <ul class="py-1" role="none">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a  class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a> 
-                            
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Employees" asp-action="Index">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Employees
-                                 
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Leave Applications
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="LeavesTypes" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Leave Type</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>approved Applications</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="layout/boxed.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pending Applications</p>
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                   System Administrator 
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview" style="display: none;">
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>System Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Departments" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Departments</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Designations" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Designation</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Countries" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Countries</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Cities" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Cities</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="SystemCodes" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>System Codes</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="SystemCodeDetails" asp-action="Index">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>System Codes Details</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    @RenderBody()
-
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; @DateTime.Now.Year <a href="">Design and created by Vijay.R .io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+    </nav>
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+            <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800 rounded-tr-lg rounded-br-lg">
+                <ul class="space-y-2 font-medium">
+                   
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>
+                           
+                            <a href="/admin" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group transition-colors duration-300
+    @(ViewContext.RouteData.Values["controller"].ToString() == "Admin" ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:!text-white" : "text-gray-600 dark:!text-gray-100")">
+                                <i class="fas fa-tachometer-alt mr-2 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-gray-200 text-gray-500 dark:text-gray-400"></i>
+                                <span class="ms-3 text-lg font-semibold">Dashboard</span>
+                            </a>
+                        </li>
+                        <li> 
+                            <a href="/admin/companies" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group transition-colors duration-300
+    @(ViewContext.RouteData.Values["controller"].ToString() == "Companies" ? "bg-gray-100 dark:bg-gray-700 text-white dark:!text-white" : "text-gray-600 dark:!text-gray-100")">
+                                <i class="fas fa-building mr-2 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-gray-200 text-gray-500 dark:text-gray-400"></i>
+                                <span class="ms-3 text-lg font-semibold">Company</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/hospital" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group transition-colors duration-300
+    @(ViewContext.RouteData.Values["controller"].ToString() == "Hospital" ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:!text-white" : "text-gray-600 dark:!text-gray-100")">
+                                <i class="fas fa-hospital mr-2 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-gray-200 text-gray-500 dark:text-gray-400"></i>
+                                <span class="ms-3 text-lg font-semibold">Hospital</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/policies" class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group transition-colors duration-300
+    @(ViewContext.RouteData.Values["controller"].ToString() == "Policies" ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:!text-white" : "text-gray-600 dark:!text-gray-100")">
+                                <i class="fas fa-file-alt mr-2 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-gray-200 text-gray-500 dark:text-gray-400"></i>
+                                <span class="ms-3 text-lg font-semibold">Policies</span>
+                            </a>
+                        </li>
+
+
+
+
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <!-- Additional Employee Sidebar Items -->
+                    }
+                </ul>
             </div>
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
         </aside>
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
-    <!-- jQuery -->
-    <script src="~/Admin/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="~/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="~/Admin/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="~/Admin/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="~/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="~/Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- Daterangepicker -->
-    <script src="~/Admin/plugins/moment/moment.min.js"></script>
-    <script src="~/Admin/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="~/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="~/Admin/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="~/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/Admin/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/Admin/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/Admin/dist/js/pages/dashboard.js"></script>
-    <!-- DataTables & Plugins -->
-    <script src="~/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="~/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="~/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="~/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/Admin/plugins/jszip/jszip.min.js"></script>
-    <script src="~/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="~/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="~/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="~/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="~/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+     
+        <div class="p-4 sm:ml-64">
+            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+                @RenderBody()
+            </div>
+        </div>
+
+}
+else
+{
+    <header>
+        <nav class="bg-white dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center p-4">
+                <a class="text-3xl font-extrabold tracking-wide text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-600" style="font-family: 'Baskervville SC', serif;" asp-area="" asp-controller="Home" asp-action="Index">HealthInsurance</a>
+                <button class="lg:hidden text-gray-500 dark:text-gray-400" type="button" id="menu-toggle">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div id="menu" class="hidden lg:flex space-x-6">
+                    <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active-nav" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium @(ViewContext.RouteData.Values["action"].ToString() == "About" ? "active-nav" : "")" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                    <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium @(ViewContext.RouteData.Values["action"].ToString() == "Contact" ? "active-nav" : "")" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+
+                    @if (Context.User.Identity.Name != null)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" asp-area="" asp-controller="Auth" asp-action="AdminDashboard">Admin Dashboard</a>
+                            <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        }
+                        else if (User.IsInRole("Employee"))
+                        {
+                            <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" asp-area="" asp-controller="Auth" asp-action="EmployeeDashboard">Employee Dashboard</a>
+                            <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                        }
+                    }
+                    else
+                    {
+                        <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" href="/admin/login">Admin Login</a>
+                        <a class="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium" href="/employee/login">Employee Login</a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bg-white dark:bg-gray-800 rounded shadow-sm p-6">
+        @RenderBody()
+    </section>
+    <footer class="bg-white dark:bg-gray-800 border-t dark:border-gray-700 border-gray-200 py-6 text-center text-gray-600 dark:text-gray-400">
+        <div class="container mx-auto">
+            <p class="text-lg">&copy; 2024 - <span class="font-semibold">HealthInsurance</span> - <a href="/privacy" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-600">Privacy</a></p>
+        </div>
+    </footer>
+}
+
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+        document.getElementById('menu').classList.toggle('hidden');
+    });
+</script>
 
 
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+<style>
+    .active-nav {
+        color: #2563eb; /* Blue 600 */
+        border-bottom: 2px solid #2563eb;
+        font-weight: bold;
+    }
+</style>
+ 
+@RenderSection("Scripts", required: false)
+    @section Scripts {
+        <script>
+            // Show the loading screen on AJAX requests
+            document.addEventListener("DOMContentLoaded", function() {
+                document.addEventListener("ajaxStart", function() {
+                    document.getElementById('loading-overlay').classList.remove('hidden');
+                });
+
+                document.addEventListener("ajaxStop", function() {
+                    document.getElementById('loading-overlay').classList.add('hidden');
+                });
+
+                // For page load
+                window.addEventListener('load', function() {
+                    document.getElementById('loading-overlay').classList.add('hidden');
+                });
             });
-        });
-    </script>
-    @await RenderSectionAsync("Scripts", required: false)
+        </script>
+    }
 </body>
 </html>
-
-
-
-
-
-
-

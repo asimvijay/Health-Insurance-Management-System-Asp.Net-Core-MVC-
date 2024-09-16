@@ -1,0 +1,60 @@
+﻿@model HealthInsurance.Models.AdminRegistrationViewModel
+
+@{
+    ViewData["Title"] = "Admin Registration";
+}
+
+<section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center py-6 lg:py-12">
+    <div class="w-full max-w-md bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-8 dark:text-white">
+                Admin Registration
+            </h1>
+
+            @if (ViewBag.Message != null)
+            {
+                <div class="mb-4 p-4 bg-green-100 border border-green-300 text-green-700 rounded-lg">
+                    @ViewBag.Message
+                </div>
+            }
+
+            @if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+            {
+                <div class="mb-4 p-4 bg-red-100 text-red-700 rounded border border-red-300">
+                    <ul>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <form asp-action="AdminRegistration" method="post" class="space-y-4 md:space-y-6">
+                <div>
+                    <label for="UserName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                    <input asp-for="UserName" id="UserName" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your username" required>
+                    <span asp-validation-for="UserName" class="text-red-500 text-sm mt-1"></span>
+                </div>
+
+                <div>
+                    <label for="Password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                    <input asp-for="Password" id="Password" type="password" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your password" required>
+                    <span asp-validation-for="Password" class="text-red-500 text-sm mt-1"></span>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

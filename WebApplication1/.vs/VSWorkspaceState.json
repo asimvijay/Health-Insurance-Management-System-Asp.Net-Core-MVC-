@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers",
+    "\\Views"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Views\\Error",
   "PreviewInSolutionExplorer": false
 }

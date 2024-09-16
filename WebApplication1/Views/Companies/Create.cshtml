@@ -1,0 +1,67 @@
+﻿@model HealthInsurance.Entities.CompanyDetails
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="w-full max-w-lg p-8 bg-white rounded-xl shadow-lg dark:bg-gray-800">
+        <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-900 dark:text-gray-100">Create Company</h1>
+        <hr class="mb-8 border-gray-300 dark:border-gray-600" />
+
+        <form asp-action="Create" class="space-y-8">
+            <div class="grid grid-cols-1 gap-y-6">
+                <div class="space-y-2">
+                    <label for="CompanyName" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Company Name
+                    </label>
+                    <input id="CompanyName" name="CompanyName" type="text" placeholder="Enter the company name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="CompanyName" class="text-red-500 text-sm"></span>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="Address" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Address
+                    </label>
+                    <input id="Address" name="Address" type="text" placeholder="Enter the address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="Address" class="text-red-500 text-sm"></span>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="Phone" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Phone
+                    </label>
+                    <input id="Phone" name="Phone" type="text" placeholder="Enter the phone number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="Phone" class="text-red-500 text-sm"></span>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="CompanyURL" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Company URL
+                    </label>
+                    <input id="CompanyURL" name="CompanyURL" type="text" placeholder="Enter the company URL" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="CompanyURL" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 flex-row-reverse mt-8">
+                <div class="w-full">
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 dark:bg-blue-700 dark:hover:bg-blue-800 rounded-lg py-3 font-medium text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                        Create
+                    </button>
+                </div>
+                <div class="text-center whitespace-nowrap">
+                    <a asp-action="Index" class="inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition duration-150 ease-in-out">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
