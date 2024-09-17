@@ -1,0 +1,94 @@
+﻿@model HealthInsurance.Entities.PoliciesOnEmployees
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="w-full max-w-lg p-8 bg-white rounded-xl shadow-lg dark:bg-gray-800">
+        <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-900 dark:text-gray-100">Add Policy on Employee</h1>
+        <hr class="mb-8 border-gray-300 dark:border-gray-600" />
+
+        <form asp-action="Create" class="space-y-8">
+            <div class="grid grid-cols-1 gap-y-6">
+                <!-- Employee Selection -->
+                <div class="space-y-2">
+                    <label for="EmpNo" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Employee
+                    </label>
+                    <select id="EmpNo" name="EmpNo" asp-for="EmpNo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out">
+                            <option value="">-- Please select Employee --</option>
+                        @foreach (var item in (SelectList)ViewBag.EmpNo)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="EmpNo" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Policy Selection -->
+                <div class="space-y-2">
+                    <label for="PolicyId" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Policy
+                    </label>
+                    <select id="PolicyId" name="PolicyId" asp-for="PolicyId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out">
+                        <option value="">-- Please select Policy --</option>
+                        @foreach (var item in (SelectList)ViewBag.PolicyId)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+
+                    </select>
+                    <span asp-validation-for="PolicyId" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Start Date -->
+                <div class="space-y-2">
+                    <label for="StartDate" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        Start Date
+                    </label>
+                    <input id="StartDate" name="StartDate" asp-for="StartDate" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="StartDate" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- End Date -->
+                <div class="space-y-2">
+                    <label for="EndDate" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        End Date
+                    </label>
+                    <input id="EndDate" name="EndDate" asp-for="EndDate" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="EndDate" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- EMI -->
+                <div class="space-y-2">
+                    <label for="EMI" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                        EMI
+                    </label>
+                    <input id="EMI" name="EMI" asp-for="EMI" type="text" placeholder="Enter the EMI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                    <span asp-validation-for="EMI" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 flex-row-reverse mt-8">
+                <div class="w-full">
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 dark:bg-blue-700 dark:hover:bg-blue-800 rounded-lg py-3 font-medium text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+                        Create
+                    </button>
+                </div>
+                <div class="text-center whitespace-nowrap">
+                    <a asp-action="Index" class="inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition duration-150 ease-in-out">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

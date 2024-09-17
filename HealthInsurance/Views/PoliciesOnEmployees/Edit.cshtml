@@ -1,0 +1,63 @@
+﻿@model HealthInsurance.Entities.PoliciesOnEmployees
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mx-auto p-6 max-w-lg">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+        <h4 class="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-200">Edit Policy on Employee</h4>
+        <hr class="border-gray-300 dark:border-gray-700 mb-8" />
+
+        <form asp-action="Edit" class="space-y-6">
+            <div asp-validation-summary="ModelOnly" class="text-red-500 mb-4"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="space-y-2">
+                <label for="EmpNo" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Employee Number</label>
+                <select id="EmpNo" name="EmpNo" asp-for="EmpNo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" asp-items="ViewBag.EmpNo"></select>
+                <span asp-validation-for="EmpNo" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="PolicyId" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Policy</label>
+                <select id="PolicyId" name="PolicyId" asp-for="PolicyId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" asp-items="ViewBag.PolicyId"></select>
+                <span asp-validation-for="PolicyId" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="StartDate" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Start Date</label>
+                <input id="StartDate" name="StartDate" asp-for="StartDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="StartDate" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="EndDate" class="block text-sm font-medium text-gray-900 dark:text-gray-100">End Date</label>
+                <input id="EndDate" name="EndDate" asp-for="EndDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="EndDate" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="space-y-2">
+                <label for="EMI" class="block text-sm font-medium text-gray-900 dark:text-gray-100">EMI</label>
+                <input id="EMI" name="EMI" asp-for="EMI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition duration-150 ease-in-out" />
+                <span asp-validation-for="EMI" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex justify-end space-x-4">
+                <a asp-action="Index" class="px-5 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 transition duration-300">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to List
+                </a>
+                <button type="submit" class="px-9 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 transition duration-300">
+                    <i class="fas fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
